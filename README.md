@@ -15,6 +15,12 @@ Kelapah is an abbreviation for Kelola Sampah. This application is created with t
 * Install [Composer](https://getcomposer.org/download) and [Npm](https://nodejs.org/en/download)
 * Clone the repository: `git clone https://github.com/Rdx11/Kelapah.git`
 * Install dependencies: `composer install ; npm install ; npm run dev`
+* edit your `.env` file
+* generate key:
+
+    ```bash
+    php artisan key:generate
+    ```
 * migrate database with seeder:
 
     ```bash
