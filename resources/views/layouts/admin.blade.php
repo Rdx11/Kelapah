@@ -35,7 +35,12 @@
 <body data-background-color="dark">
     <div class="wrapper">
         @include('partials.header')
-         @include('partials.sidebar')
+
+        <div class="sidebar sidebar-style-2" data-background-color="dark2">
+            <div class="sidebar-wrapper scrollbar scrollbar-inner">
+                 @include('partials.sidebar')
+             </div>
+         </div>
         <div class="main-panel">
             <div class="content">
                 <div class="page-inner">

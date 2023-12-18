@@ -1,0 +1,114 @@
+:root {
+    --primary-color: #198754;
+    --second-color: #5bd15b;
+    --accent-color: #b4ebb4;
+}
+
+body {
+    background-color: #fefefe;
+    font-size: 14px;
+}
+
+.header-section {
+    overflow: hidden;
+}
+
+.backgr {
+    box-shadow: 0px 2px 5px rgba(85, 85, 86, 0.482);
+    border-radius: 10px;
+}
+
+.mt-space {
+    margin-top: 20px;
+}
+
+.carousel-main .carousel-caption {
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: initial;
+    right: inherit;
+}
+
+.main-banner {
+    box-sizing: border-box;
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+}
+
+.home1 img {
+    height: 60px;
+    background-color: var(--accent-color);
+    border-radius: 20%;
+    padding: 2px;
+    transition: all;
+    transition-duration: 500ms;
+}
+.home1 img:hover {
+    scale: 1.2;
+    background-color: var(--second-color);
+}
+.home1 p {
+    font-size: 20px;
+    font-weight: 500;
+    transition: all;
+    transition-duration: 500ms;
+}
+@media (max-width: 538px) {
+    .home1 img {
+        height: 45px;
+    }
+    .home1 p {
+        font-size: 15px;
+        font-weight: 500;
+    }
+}
+
+/* .home2 .row {
+    background: url('aset/pngtruksampah.png');
+    background-repeat: no-repeat;
+    background-size: 400px;
+    background-position-x: right;
+    background-position-y: center;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px 1px rgba(85, 85, 86, 0.18);
+    min-height: 237px;
+
+} */
+
+.home2 .card {
+    transition: all;
+    transition-duration: 500ms;
+}
+
+.home2 .card:hover {
+    scale: 1.05;
+    z-index: 2;
+    border: 1px solid green;
+}
+
+.home2 .card-body p {
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.footer-section {
+    background: url("../img/layered-waves-haikei.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fefefe;
+}
+
+.footer-section ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    font-size: medium;
+    justify-content: center;
+    padding-left: 0;
+    padding-top: 15px;
+}
+.footer-section li {
+    display: list-item;
+}

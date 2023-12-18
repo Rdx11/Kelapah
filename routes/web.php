@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +26,5 @@ Route::get("/admin", function () {
 Route::get("/user", function () {
     return view('admin.userdashboard');
 });
+
+Route::resource('/reports', ReportController::class);
