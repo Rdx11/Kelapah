@@ -13,7 +13,7 @@ return new class extends Migration
     {
 
         Schema::create('report', function (Blueprint $table) {
-            $table->bigIncrements('id_report'); // Menggunakan bigIncrements
+            $table->bigIncrements('id_report');
             $table->integer('id_user');
             $table->string('title', 255);
             $table->text('description');
@@ -21,7 +21,8 @@ return new class extends Migration
             $table->integer('id_category');
             $table->string('location_report', 255);
             $table->string('status', 50);
-            $table->date('date_report');
+            $table->date('date_report')->default(now());
+            $table->timestamps();
         });
     }
 

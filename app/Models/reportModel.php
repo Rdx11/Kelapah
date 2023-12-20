@@ -4,12 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class reportModel extends Model
+class ReportModel extends Model
 {
     protected $table = 'report';
     protected $primaryKey = 'id_report';
-    public $timestamps = false;
-
     protected $fillable = [
         'id_user',
         'title',
@@ -19,9 +17,5 @@ class reportModel extends Model
         'location_report',
         'status',
         'date_report',
-    ];
-
-    protected $casts = [
-        'date_report' => 'date',
     ];
 }

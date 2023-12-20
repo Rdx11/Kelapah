@@ -3,17 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\reportModel;
+use App\Models\ReportModel;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class ReportController extends Controller
 {
+    private $reportModel;
+
+    public function __construct(ReportModel $reportModel)
+    {
+        $this->reportModel = $reportModel;
+    }
+
     public function index()
     {
-        $reports = reportModel::all();
+        $reports = $this->reportModel->all();
         return view('reports.index', compact('reports'));
     }
+
 
     public function create()
     {
@@ -23,103 +32,107 @@ class ReportController extends Controller
     public function store(Request $request)
     {
         $log = Log::channel("report");
-        $log->info("simpan report");
+
         try {
-            $validator = Validator::make($request->all(), [
+            $data = $request->validate([
                 'id_user' => 'required',
                 'title' => 'required',
                 'description' => 'required',
-                'attachment' => 'required|mimes:pdf|max:2048', // Hanya izinkan file PDF, maksimal 2 MB
+                'attachment' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
                 'id_category' => 'required',
                 'location_report' => 'required',
                 'status' => 'required',
-                'date_report' => 'required|date',
             ]);
 
-            if ($validator->fails()) {
-                return redirect('reports/create')
-                    ->withErrors($validator)
-                    ->withInput();
+            if ($request->hasFile('attachment')) {
+                $attachmentPath = $request->file('attachment')->store('attachments', 'public');
+                $data['attachment'] = $attachmentPath;
             }
 
-            // Menyimpan file PDF
-            $attachment = $request->file('attachment');
-            $attachmentName = 'report_' . time() . '.' . $attachment->getClientOriginalExtension();
-            $attachment->move(public_path('attachments'), $attachmentName);
+            // Menambahkan tanggal laporan
+            $data['date_report'] = now();
 
-            // Menyimpan data report
-            $data = $request->all();
-            $data['attachment'] = $attachmentName;
-            $report = reportModel::create($data);
+            $report = $this->reportModel->create($data);
 
-            Log::info('Report created: ' . $report->id_report);
+            Log::info('Laporan berhasil dibuat', $data);
 
-            return redirect('reports')->with('success', 'Report added successfully');
+            return redirect('reports')->with('success', 'Laporan berhasil ditambahkan');
         } catch (\Exception $e) {
-            Log::error('Error creating report: ' . $e->getMessage());
-            return redirect('reports')->with('error', 'Error adding report');
+            Log::error('Error creating report: ' . $e->getMessage(), $data);
+            return redirect('reports')->with('error', 'Error menambahkan laporan');
         }
     }
+
 
     public function edit($id)
     {
-        $report = reportModel::find($id);
+        $report = $this->reportModel->find($id);
         return view('reports.edit', compact('report'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, ReportModel $report)
     {
         try {
             $validator = Validator::make($request->all(), [
                 'id_user' => 'required',
                 'title' => 'required',
                 'description' => 'required',
-                'attachment' => 'nullable|mimes:pdf|max:2048', // Hanya izinkan file PDF, maksimal 2 MB
+                'attachment' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
                 'id_category' => 'required',
                 'location_report' => 'required',
                 'status' => 'required',
-                'date_report' => 'required|date',
+
             ]);
 
             if ($validator->fails()) {
-                return redirect('reports/' . $id . '/edit')
+                return redirect()->route('reports.edit', ['report' => $report->id_report])
                     ->withErrors($validator)
                     ->withInput();
             }
 
-            $report = reportModel::find($id);
-
-            // Jika ada file PDF baru diunggah, simpan dan update nama file
+            // Proses file attachment
             if ($request->hasFile('attachment')) {
-                $attachment = $request->file('attachment');
-                $attachmentName = 'report_' . time() . '.' . $attachment->getClientOriginalExtension();
-                $attachment->move(public_path('attachments'), $attachmentName);
-                $report->attachment = $attachmentName;
+                // Hapus file lama jika ada
+                if ($report->attachment) {
+                    Storage::disk('public')->delete($report->attachment);
+                }
+
+                // Simpan file gambar baru
+                $attachmentPath = $request->file('attachment')->store('attachments', 'public');
+                $report->attachment = $attachmentPath;
             }
 
-            $report->update($request->all());
+            $report->update($request->except('attachment')); // Kecuali field attachment
 
-            Log::info('Report updated: ' . $report->id_report);
+            Log::info('Laporan berhasil diperbarui', ['id_report' => $report->id_report]);
 
-            return redirect('reports')->with('success', 'Report updated successfully');
+            return redirect()->route('reports.index')->with('success', 'Laporan berhasil diperbarui');
         } catch (\Exception $e) {
             Log::error('Error updating report: ' . $e->getMessage());
-            return redirect('reports')->with('error', 'Error updating report');
+            return redirect()->route('reports.edit', ['report' => $report->id_report])->with('error', 'Error memperbarui laporan');
         }
     }
+
+
 
     public function destroy($id)
     {
         try {
-            $report = reportModel::find($id);
+            $report = ReportModel::findOrFail($id);
+
+            // Hapus file lampiran jika ada
+            if ($report->attachment) {
+                Storage::disk('public')->delete($report->attachment);
+            }
+
             $report->delete();
 
-            Log::info('Report deleted: ' . $id);
+            Log::info('Laporan dihapus: ' . $id);
 
-            return redirect('reports')->with('success', 'Report deleted successfully');
+            return redirect('reports')->with('success', 'Laporan berhasil dihapus');
         } catch (\Exception $e) {
-            Log::error('Error deleting report: ' . $e->getMessage());
-            return redirect('reports')->with('error', 'Error deleting report');
+            Log::error('Error menghapus laporan: ' . $e->getMessage());
+            return redirect('reports')->with('error', 'Error menghapus laporan. Silakan coba lagi.');
         }
     }
 }
