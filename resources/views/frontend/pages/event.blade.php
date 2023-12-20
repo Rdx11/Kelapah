@@ -12,7 +12,9 @@
             </div>
             <div class="offcanvas-body">
                 <div class="pt-3">
-                    <h6>Tanggal Pelaksanaan</h6>
+                    <div class="filter">
+                        <h6>Tanggal Pelaksanaan</h6>
+                    </div>
                     <ul>
                         <li>
                             <label for="">From</label>
@@ -25,7 +27,9 @@
                     </ul>
                 </div>
                 <div class="pt-3">
-                    <h6>Status</h6>
+                    <div class="filter">
+                        <h6>Status</h6>
+                    </div>
                     <ul>
                         <li>
                             <input type="checkbox" class="form-check-input" checked name="" id="">
@@ -38,7 +42,9 @@
                     </ul>
                 </div>
                 <div class="pt-3">
-                    <h6>Partispasi</h6>
+                    <div class="filter">
+                        <h6>Partispasi</h6>
+                    </div>
                     <ul>
                         <li>
                             <input type="checkbox" class="form-check-input" checked name="" id="">
@@ -50,7 +56,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="">
+                <div class="pt-3">
                     <button type="button" class="btn btn-primary">Terapkan</button>
                     <button type="button" class="btn btn-danger">Batalkan</button>
                 </div>

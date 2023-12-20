@@ -148,6 +148,7 @@ body {
 .event-section ul{
     list-style: none;
     padding-left: 0;
+    padding-top: 1rem;
 }
 
 .myoffcanvas{
@@ -169,4 +170,11 @@ body {
 .card-img-top{    
     object-fit: cover;
     aspect-ratio: 402/178;
+}
+
+.myoffcanvas .filter{
+    border-bottom: double var(--accent-color);
+}
+.myoffcanvas .filter h6{
+    font-weight: 600;
 }

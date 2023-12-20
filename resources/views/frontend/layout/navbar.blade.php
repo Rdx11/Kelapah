@@ -3,7 +3,7 @@
     <header style="margin-bottom: 20px!important;">
         <nav class="navbar navbar-expand-lg shadow sticky-top">
             <div class="container">
-                <img src="{{ asset('frontend/aset/PureLogo.png') }}" style="background-blend-mode: color-burn;" width="40px" alt="">
+                <img src="{{ asset('frontend/aset/logo/PureLogo.png') }}" style="background-blend-mode: color-burn;" width="40px" alt="">
                 <a class="navbar-brand ps-2" href="indeks.html">KELAPAH</a>
                 <button class="navbar-toggler justify-content-end" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
