@@ -107,6 +107,9 @@ body {
     display: -webkit-box;
     -webkit-box-orient: vertical;
 }
+.card-event .card-body p.show-desc {
+    -webkit-line-clamp: 10;
+}
 
 .home4 {
     background-color: var(--primary-color);

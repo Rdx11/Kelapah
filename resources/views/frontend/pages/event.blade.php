@@ -69,7 +69,7 @@
             <div class="row pt-1">
                 <div class="col-sm-4 pb-2">
                     <div class="card backgr card-event">
-                        <div class="card-body">
+                        <div class="card-body" onclick="showEventDesc(this)">
                             <img src="{{ asset('frontend/aset/dummy/example.jpg') }}" class="card-img-top" alt="...">
                             <h5 class="card-title">Special title treatment</h5>
                             <ul>
@@ -96,7 +96,7 @@
                 </div>
                 <div class="col-sm-4 pb-2">
                     <div class="card backgr card-event">
-                        <div class="card-body">
+                        <div class="card-body" onclick="showEventDesc(this)">
                             <img src="{{ asset('frontend/aset/dummy/exapml.jpg') }}" class="card-img-top" alt="...">
                             <h5 class="card-title">Special title treatment</h5>
                             <ul>
@@ -124,7 +124,7 @@
                 </div>
                 <div class="col-sm-4 pb-2">
                     <div class="card backgr card-event">
-                        <div class="card-body">
+                        <div class="card-body" onclick="showEventDesc(this)">
                             <img src="{{ asset('frontend/aset/dummy/example.jpg') }}" class="card-img-top" alt="...">
                             <h5 class="card-title">Special title treatment</h5>
                             <ul>
@@ -151,7 +151,7 @@
                 </div>
                 <div class="col-sm-4 pb-2">
                     <div class="card backgr card-event">
-                        <div class="card-body">
+                        <div class="card-body" onclick="showEventDesc(this)">
                             <img src="{{ asset('frontend/aset/dummy/exapml.jpg') }}" class="card-img-top" alt="...">
                             <h5 class="card-title">Special title treatment</h5>
                             <ul>
@@ -179,7 +179,7 @@
                 </div>
                 <div class="col-sm-4 pb-2">
                     <div class="card backgr card-event">
-                        <div class="card-body">
+                        <div class="card-body" onclick="showEventDesc(this)">
                             <img src="{{ asset('frontend/aset/dummy/example.jpg') }}" class="card-img-top" alt="...">
                             <h5 class="card-title">Special title treatment</h5>
                             <ul>
@@ -206,7 +206,7 @@
                 </div>
                 <div class="col-sm-4 pb-2">
                     <div class="card backgr card-event">
-                        <div class="card-body">
+                        <div class="card-body" onclick="showEventDesc(this)">
                             <img src="{{ asset('frontend/aset/dummy/exapml.jpg') }}" class="card-img-top" alt="...">
                             <h5 class="card-title">Special title treatment</h5>
                             <ul>
