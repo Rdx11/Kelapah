@@ -27,7 +27,7 @@
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-1 fs-5">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="indeks.html">Home</a>
+                                <a class="nav-link active" aria-current="page" href="{{ url('/') }}">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('list.article') }}">Article</a>
@@ -55,47 +55,8 @@
         </header>
     </section>
 
-    <!-- banner -->
-    <section class="header-section banner">
-        <div class="container">
-            <div id="carouselExampleAutoplaying" class="carousel carousel-dark slide backgr" data-bs-ride="carousel">
-                <div class="carousel-inner" style="border-radius: 10px;">
-                    <div class="carousel-item carousel-main active" data-bs-interval="100000">
-                        <div class="main-banner-bg"><img src="{{ asset('frontend/asset/pngtruksampah01.png') }}" class="d-block w-100 main-banner" style="aspect-ratio: 7/3;"
-                            alt="..."></div>
-                        <div class="carousel-caption">
-                            <h3 class="">Bersihkan, Bawa Perubahan</h3>
-                            <p class="pb-1">Tindakan kecil dapat membawa dampak besar bagi masa depan.
-                            </p>
-                            <a href="{{ route('create.report') }}" id="laporanButton" type="button" class="btn btn-success" style="border-color: #fefefe;">Lapor Sekarang</a>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{ asset('frontend/asset/gambarsampah1.jpg') }}" class="d-block w-100"
-                            style="aspect-ratio: 7/3;" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{ asset('frontend/asset/gambarsampah2.jpg') }}" class="d-block w-100"
-                            style="aspect-ratio: 7/3;" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="{{ asset('frontend/asset/gambarsampah3.jpg') }}" class="d-block w-100"
-                            style="aspect-ratio: 7/3;" alt="...">
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon opacity-25" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon opacity-25" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </div>
-    </section>
+    <!-- event -->
+    @yield('content')
 
     <!-- informasi -->
     <section class="main-section home3 mt-space">
@@ -106,9 +67,6 @@
             </div>
         </div>
     </section>
-
-    <!-- event -->
-    @yield('content')
 
     <!--footer-->
     <section id="tentangKami">
