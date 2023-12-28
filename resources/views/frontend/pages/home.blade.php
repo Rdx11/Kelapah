@@ -67,4 +67,14 @@ Home
         @endforeach
     </div>
 </section>
+
+<!-- informasi -->
+<section class="main-section home3 mt-space">
+    <div class="container">
+        <div class="d-flex text-center justify-content-center align-items-center pt-3 pb-3">
+        <img src="{{ asset('frontend/asset/city.svg') }}" width="100px" alt="">
+        <p class="ps-3 pe-3" style="font-size: 20px;">Membantu menjaga kebersihan di 2 Kota di Indonesia</p>
+        </div>
+    </div>
+</section>
 @endsection
