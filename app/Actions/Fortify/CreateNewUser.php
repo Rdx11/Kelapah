@@ -42,6 +42,11 @@ class CreateNewUser implements CreatesNewUsers
                 'password' => Hash::make($input['password']),
             ]);
 
+            request()->merge(['user_id' => $user->id]);
+            $user->profile()->create([
+                'gender' => $input['gender']
+            ]);
+
             $user->assignRole('user');
 
             DB::commit();

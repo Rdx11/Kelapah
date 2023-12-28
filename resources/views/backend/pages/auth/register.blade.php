@@ -15,6 +15,13 @@
                 <input id="email" name="email" type="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
             </div>
             <div class="form-group">
+                <label for="defaultSelect">Gender</label>
+                <select class="form-control form-control" id="defaultSelect" name="gender">
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
                 <label for="password" class="placeholder"><b>Password</b></label>
                 <div class="position-relative">
                     <input id="password" name="password" type="password" class="form-control @error('password') is-invalid @enderror">

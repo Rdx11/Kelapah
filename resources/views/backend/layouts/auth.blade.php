@@ -43,5 +43,8 @@
     <script src="{{ asset('backend/js/core/popper.min.js') }}"></script>
     <script src="{{ asset('backend/js/core/bootstrap.min.js') }}"></script>
     <script src="{{ asset('backend/js/atlantis.min.js') }}"></script>
+
+    <!-- javascript custom file -->
+    @stack('script')
   </body>
 </html>

@@ -1,0 +1,150 @@
+:root {
+    --primary-color: #198754;
+    --second-color: #19870099;
+    --accent-color: #b4ebb4;
+}
+
+body {
+    background-color: #fefefe;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+.header-section {
+    overflow: hidden;
+}
+
+.backgr {
+    box-shadow: 0px 2px 5px rgba(85, 85, 86, 0.482);
+    border-radius: 10px;
+}
+
+.mt-space{
+    margin-top: 20px;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-family: 'Preahvihear', sans-serif;
+    background:linear-gradient(to right, #198754 0%, #19875496 100%);
+    background-clip: text;
+    color: transparent;
+    background: -webkit-linear-gradient(#198754 0%, #19875496 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.carousel-main .carousel-caption {
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: initial;
+    right: inherit;
+}
+
+.main-banner-bg {
+    background: url('asset/blob.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main-banner {
+    box-sizing: border-box;
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+}
+
+.home1 img {
+    height: 60px;
+    width: 60px;
+    background-color: var(--accent-color);
+    border-radius: 20%;
+    padding: 2px;
+    transition: all;
+    transition-duration: 500ms;
+}
+.home1 img:hover {
+    background-color: var(--second-color);
+}
+.home1 span {
+    font-size: 12px;
+    transition: all;
+    transition-duration: 500ms;
+}
+@media (max-width: 538px) {
+    .home1 img {
+        height: 45px;
+        width: 45px;
+    }
+}
+
+/* .home2 .row {
+    background: url('aset/pngtruksampah.png');
+    background-repeat: no-repeat;
+    background-size: 400px;
+    background-position-x: right;
+    background-position-y: center;
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px 1px rgba(85, 85, 86, 0.18);
+    min-height: 237px;
+
+} */
+
+.home2 .card {
+    transition: 0.4s ease-in-out;
+}
+
+.home2 .card:hover {
+    z-index: 2;
+    box-shadow: 0px 4px 10px rgba(85, 85, 86, 0.286);
+    transform: translateY(-6px);
+}
+
+
+.home2 .card-body p {
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.home3 {
+    background-color: var(--primary-color);
+    color: #fefefe;
+}
+
+.home3 img {
+  animation: icon 3s linear 0s infinite;
+}
+
+@keyframes icon {
+    0%   {transform: translateY(0px);}
+    25%  {transform: translateY(-3px);}
+    50%  {transform: translateY(0px);}
+    100% {transform: translateY(0px);}
+  }
+
+.footer-section {
+    background:url('asset/layered-waves-haikei.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fefefe;
+}
+
+.footer-section ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    font-size: medium;
+    justify-content: center;
+    padding-left: 0;
+    padding-top: 15px;
+}
+
+.footer-section li {
+    display: list-item;
+}
+
+.cursor-pointer {
+    cursor: pointer !important;
+  }
