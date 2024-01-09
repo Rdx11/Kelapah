@@ -6,12 +6,12 @@ use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Str;
+
 class ArticleBusinessLayer
 {
-
     public function getAll(): LengthAwarePaginator
     {
-        return Article::exclude(['created_at', 'updated_at'])->with(['user', 'category'])->paginate(100);
+        return Article::exclude(['created_at'])->orderBy('created_at', 'desc')->with(['user', 'category'])->paginate(5);
     }
 
     public function store($request): void
@@ -21,7 +21,7 @@ class ArticleBusinessLayer
             'user_id' => auth()->user()->id,
             'title' => $request['title'],
             'thumbnail' => $request['thumbnail'],
-            'content' => $request['content'],
+            'content' => str_replace('&nbsp;', ' ', $request['content']),
             'status' => $request['status'],
             'slug' => Str::slug($request['title']),
         ]);
@@ -46,4 +46,13 @@ class ArticleBusinessLayer
         $category = Article::find($id);
         $category->delete($id);
     }
+
+    public function getData($request)
+    {
+        return Article::exclude('updated_at')
+            ->where('slug', $request)
+            ->with('user', 'category')
+            ->first();
+    }
+
 }

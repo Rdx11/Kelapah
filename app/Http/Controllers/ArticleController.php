@@ -14,7 +14,8 @@ class ArticleController extends Controller
 {
     private $articleBusinessLayer;
 
-    public function __construct(ArticleBusinessLayer $articleBusinessLayer) {
+    public function __construct(ArticleBusinessLayer $articleBusinessLayer)
+    {
         $this->articleBusinessLayer = $articleBusinessLayer;
     }
     /**
@@ -47,9 +48,10 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Article $article)
+    public function show($request)
     {
-        //
+        $article = $this->articleBusinessLayer->getData($request);
+        return view('frontend.pages.detail-article', compact('article'));
     }
 
     /**
@@ -58,7 +60,7 @@ class ArticleController extends Controller
     public function edit(Article $article): View
     {
         $categories = Category::select('id', 'name')->get();
-        return view('backend.pages.article.edit',compact('article', 'categories'));
+        return view('backend.pages.article.edit', compact('article', 'categories'));
     }
 
     /**
@@ -81,7 +83,19 @@ class ArticleController extends Controller
 
     public function listArticle()
     {
-        $articles = $this->articleBusinessLayer->getAll();
-        return view('frontend.pages.article', compact('articles'));
+        $categories = Category::select('id', 'name')->get();
+        
+        $checked = request()->get('filter-article');
+
+        if ($checked) {
+            $categoryNames = Category::whereIn('name', $checked)->pluck('name')->toArray();
+            $articles = Article::whereHas('category', function ($query) use ($categoryNames) {
+                $query->whereIn('name', $categoryNames);
+            })->paginate(5);
+        } else {
+            $articles = $this->articleBusinessLayer->getAll();
+        }
+
+        return view('frontend.pages.article', compact('articles', 'categories'));
     }
 }

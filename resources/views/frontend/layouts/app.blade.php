@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
 
+    <link rel="icon" href="{{ asset('backend/img/logo3.png') }}" type="image/x-icon"/>
+
     <link href="{{ asset('frontend/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('frontend/style.css') }}">
@@ -18,26 +20,23 @@
         <header style="margin-bottom: 20px!important;">
             <nav class="navbar navbar-expand-lg shadow sticky-top">
                 <div class="container">
-                    <img src="{{ asset('backend/img/logo5.png') }}" style="background-blend-mode: color-burn;" width="10%" alt="">
+                    <img src="{{ asset('backend/img/logo5.png') }}" style="background-blend-mode: color-burn;" width="120px" alt="">
                     <button class="navbar-toggler justify-content-end" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false"
                         aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-1 fs-5">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-1">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="{{ url('/') }}">Home</a>
+                                <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('list.article') }}">Article</a>
                             </li>
                             @if (auth()->check())
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
+                                <a class="nav-link" href="{{ route('profile-information') }}">Profile</a>
                             </li>
                             @else
                             <li class="nav-item">
@@ -45,10 +44,10 @@
                             </li>
                             @endif
                         </ul>
-                        <form class="d-flex" role="search" id="search-form" action="#" method="get">
+                        {{-- <form class="d-flex" role="search" id="search-form" action="#" method="get">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="search-input">
                             <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
+                        </form> --}}
                     </div>
                 </div>
             </nav>

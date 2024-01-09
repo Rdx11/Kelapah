@@ -148,3 +148,87 @@ body {
 .cursor-pointer {
     cursor: pointer !important;
   }
+
+  
+/* list */
+.myoffcanvas{
+    top: 0;
+    left: 0;
+    width: 0px;
+    transform: translateX(-100%);
+    transition: all;
+    transition-duration: 10ms;
+    visibility: hidden;
+}
+
+.myoffcanvas.show{
+    transform: none;
+    width: 300px;
+    visibility: visible;
+}
+
+.card-img-top{    
+    object-fit: cover;
+    aspect-ratio: 402/178;
+}
+
+.myoffcanvas .filter{
+    border-bottom: double var(--accent-color);
+}
+.myoffcanvas .filter h6{
+    font-weight: 600;
+}
+
+.list-artikel p{
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-align: justify;
+}
+
+.filter-artikel ul{
+    list-style: none;
+    padding-left: 0;
+    padding-top: 15px;
+}
+
+.filter-artikel li{
+    display: inline-flex;
+    padding: 2px;
+}
+  
+/* artikel */
+.artikel{
+    max-width: 1000px;
+}
+
+.artikel-title a{
+    text-decoration: none;
+    color: #666;
+}
+.artikel-title img{
+    width: 100%;
+    padding-bottom: 1rem;
+    max-width: 900px;
+}
+
+.entry-content{
+    color: #666;
+    padding-left: 8px;
+    padding-right: 8px;
+    text-align: justify;
+}
+.entry-content h2{
+    color: #010101;
+}
+.entry-content a{
+    text-decoration: none;
+}
+
+.entry-content p{
+    font-size: 14px;
+    padding-bottom: 1em;
+}
+
+/* home */

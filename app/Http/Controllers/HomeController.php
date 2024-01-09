@@ -10,7 +10,9 @@ class HomeController extends Controller
 {
     public function index(): View
     {
-        $articles = Article::all();
+        $articles = Article::orderBy('created_at', 'asc')
+            ->limit(2)
+            ->get();
         return view('frontend.pages.home', compact('articles'));
     }
 }
