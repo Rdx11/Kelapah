@@ -87,7 +87,7 @@ Article
                     <div class="card mb-3">
                         <div class="row g-0">
                             <div class="col-md-4  m-auto">
-                                <img src="/aset/exapml.jpg" class="img-fluid rounded-start" alt="...">
+                                <img src="{{ $article->thumbnail }}" class="img-fluid rounded-start" alt="...">
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body">
